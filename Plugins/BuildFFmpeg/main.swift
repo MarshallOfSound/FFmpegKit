@@ -445,6 +445,9 @@ class BaseBuild {
             var arguments = [
                 makeLists.path,
                 "-DCMAKE_VERBOSE_MAKEFILE=0",
+                // cmake 4 refuses projects declaring a pre-3.5 minimum
+                // (libsrt et al.); accept them.
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DCMAKE_OSX_SYSROOT=\(platform.sdk.lowercased())",
                 "-DCMAKE_OSX_ARCHITECTURES=\(arch.rawValue)",
