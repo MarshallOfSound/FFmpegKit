@@ -29,7 +29,15 @@ class BuildHarfbuzz: BaseBuild {
     override func arguments(platform _: PlatformType, arch _: ArchType) -> [String] {
         [
             "-Dglib=disabled",
+            // Homebrew's glib leaks in via pkg-config and flips the gobject
+            // variant on, which both drags a host dependency into a cross
+            // build and trips clang 21's cast-function-type-strict errors.
+            "-Dgobject=disabled",
+            "-Dcairo=disabled",
+            "-Dchafa=disabled",
             "-Ddocs=disabled",
+            "-Dtests=disabled",
+            "-Dutilities=disabled",
         ]
     }
 }
