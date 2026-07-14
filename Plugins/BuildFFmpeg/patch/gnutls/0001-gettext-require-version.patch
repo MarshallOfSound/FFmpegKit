@@ -1,15 +1,15 @@
 Modern gettext's autopoint rejects AM_GNU_GETTEXT_VERSION together
 with AM_GNU_GETTEXT_REQUIRE_VERSION as duplicate invocations; keep
-only the REQUIRE form (gettext >= 0.19 is guaranteed via Homebrew).
+only the VERSION form so autopoint still installs the gettext infra.
 
 --- a/configure.ac
 +++ b/configure.ac
 @@ -392,8 +392,5 @@
  
  AM_GNU_GETTEXT([external])
--AM_GNU_GETTEXT_VERSION([0.19])
+ AM_GNU_GETTEXT_VERSION([0.19])
 -m4_ifdef([AM_GNU_GETTEXT_REQUIRE_VERSION],[
- AM_GNU_GETTEXT_REQUIRE_VERSION([0.19])
+-AM_GNU_GETTEXT_REQUIRE_VERSION([0.19])
 -])
  
  AC_C_BIGENDIAN
