@@ -1,0 +1,18 @@
+clang 21 makes -Wcast-function-type-strict a default error; hb-ft's
+FreeType callback casts (FT_Generic_Finalizer etc.) trip it on every
+build. Silence the diagnostic for this file.
+
+--- a/src/hb-ft.cc
++++ b/src/hb-ft.cc
+@@ -30,6 +30,10 @@
+ #include "hb.hh"
+ 
+ #ifdef HAVE_FREETYPE
+ 
++#if defined(__clang__)
++#pragma clang diagnostic ignored "-Wcast-function-type-strict"
++#endif
++
+ #include "hb-ft.h"
+ 
+ #include "hb-draw.hh"
