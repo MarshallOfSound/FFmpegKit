@@ -963,7 +963,7 @@ enum PlatformType: String, CaseIterable {
         cflags.append("-fno-common")
         // clang 21 promotes this to error under -Werror; harfbuzz 5.3.1's
         // FreeType glue trips it on every FT_Generic_Finalizer cast.
-        cflags.append("-Wno-error=cast-function-type-strict")
+        cflags.append("-Wno-cast-function-type-strict")
 //        if self == .android {
 //            cflags.append("-fstrict-aliasing")
 //            cflags.append("-DANDROID_NDK")
