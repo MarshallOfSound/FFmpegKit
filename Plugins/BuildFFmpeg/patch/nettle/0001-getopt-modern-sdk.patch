@@ -1,0 +1,25 @@
+Fix K&R prototypes that conflict with modern Apple SDK headers.
+
+--- a/getopt.h
++++ b/getopt.h
+@@ -166,7 +166,7 @@
+ #  endif
+ # endif
+ #else /* not __GNU_LIBRARY__ */
+-extern int getopt ();
++#include <unistd.h>
+ #endif /* __GNU_LIBRARY__ */
+ 
+ #ifndef __need_getopt
+--- a/getopt.c
++++ b/getopt.c
+@@ -135,8 +135,6 @@
+ /* Avoid depending on library functions or files
+    whose names are inconsistent.  */
+ 
+-#ifndef getenv
+-extern char *getenv ();
+-#endif
++#include <stdlib.h>
+ 
+ #endif /* not __GNU_LIBRARY__ */
