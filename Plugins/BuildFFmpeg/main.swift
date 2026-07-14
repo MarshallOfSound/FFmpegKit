@@ -747,11 +747,11 @@ enum PlatformType: String, CaseIterable {
     var minVersion: String {
         switch self {
         case .ios, .isimulator:
-            return "13.0"
+            return "16.0"
         case .tvos, .tvsimulator:
-            return "13.0"
+            return "16.0"
         case .macos:
-            return "10.15"
+            return "13.0"
         case .maccatalyst:
             return "14.0"
         case .watchos, .watchsimulator:
