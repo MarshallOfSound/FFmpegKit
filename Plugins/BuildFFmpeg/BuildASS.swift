@@ -37,7 +37,6 @@ class BuildHarfbuzz: BaseBuild {
             "-Dchafa=disabled",
             "-Ddocs=disabled",
             "-Dtests=disabled",
-            "-Dutilities=disabled",
         ]
     }
 }
